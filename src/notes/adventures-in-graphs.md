@@ -34,7 +34,7 @@ Since each topic is semantically defined by its connections, can our image repre
 
 An adjacency list actually lends itself really well to creating images from its information, because images are really just arrays or tensors, and in PyTorch ([and NumPy](https://numpy.org/doc/stable/user/basics.indexing.html#advanced-indexing), where PyTorch got the idea from), tensors have "fancy" indexing of arrays using other arrays. Why is that handy? Because we can theoretically take a list of non-adjacent node id's, use them as the indices to select from another existing array, and set them to whatever value(s) we choose. In other words, if we have a node's adjacency list, we can use that directly as an index to represent that node's neighbors as `1` (or some other value) in a tensor, while leaving all other values `0`.
 
-```python3
+```python
 node0_neighbors = np.array([1, 4, 6, 7, 9]) # A made-up list of node 0's neighbor nodes.
 
 # Create a "base" of zeros
@@ -45,7 +45,7 @@ base[node0_neighbors] = 1 # Now, all of node 0's neighbors are `1`, and everythi
 
 Getting a full-graph adjacency list to use for this isn't too hard, but there *is* one caveat: our list is going to need to retain information about not just node connectivity, but also time. Remember, our model is supposed to tell us whether two nodes will be connected in *n* years—so in order to provide the model with ground-truth data to train on, we need to know about nodes' connectivity three years from whatever we feed the model. We'll get to how we could incorporate that to use during training, but here's the creation of our adjacency list, making sure we retain the temporal info:
 
-```python3
+```python
 # Using the built-in `defaultdict` from Python's `collections`
 # lets us easily build a dict iteratively without having
 # to know the final state its elements from the start:
@@ -73,7 +73,7 @@ for key,value in arr_dict.items():
 ```
 
 Now, if we want to create an "image" for a node's connectivity, we can use the little process from above and get this:
-```python3
+```python
 # If there are ~64000 nodes, then 255 x 255 could be a big enough image size
 image_shape = (255,255)
 
@@ -95,14 +95,14 @@ You know what's (ostensibly) better than 1-hop neighborhoods at representing nod
 
 In theory, it shouldn't be too hard to get the second order neighbors for a node. We already have all of the neighbors in our adjacency list, so we can just index the adjacency list of each of a node's neighbors, and we're good! Here's a simple way to do that:
 
-```python3
+```python
 src_node = 1 # Finding node 1's 2nd order neighbors
 
 [adj_list[neighbor][0] for neighbor in adj_list[src_node][0]]
 ```
 
 That's great, but we're also going to need to use the temporal data from all of these neighbors—as noted above, we need to restrict our view of the graph to certain time constraints, which means we can't just index *every* neighbor. Instead, we'll want something more like this:
-```python3
+```python
 src_node = 1
 t = 8000 # Set time cutoff to day 8000
 
@@ -115,7 +115,7 @@ t = 8000 # Set time cutoff to day 8000
 ```
 
 There is also a [much more convoluted way](#altered-matrix-multiplication) of doing this that entails implementing an altered matrix multiplication for a sparsely-described adjacency matrix, leveraging the fact that [the square of an adjacency matrix represents the number of walks of length two from one node to another](https://arxiv.org/abs/1207.3122). I originally opted for this approach out of fear that Python's iteration would be too slow with the method above for practical use during training, but after testing it out while writing this post…the above list comprehension is actually faster. Here's my final function to get a node's first and second order neighbors (with built-in functionality for getting up to *k* total layers of neighbors, although exponential list growth with this approach makes any *k* > 2 a bit problematic):
-```python3
+```python
 def get_neighbors(adj_list, node, t=None, k=2):
     neighbors_list = []
     nbrs = [node]
@@ -165,13 +165,13 @@ For training, I used fast.ai, leveraging its [mid-level API](https://docs.fast.a
 
 A `Transform` is, at the most basic level, just a function: it takes an input and *transforms* it into something else. (You might say a `Transform` is a *function in disguise*.) They have some nifty bonus features—like type dispatch, potential reversability (to allow both encoding and *de*coding), and extensability to name a few—but my primary use here is to use them as a medium for creating fast.ai `DataBlock`s in a convenient format for my partucular data. There are quite a few ways to define a `Transform`, but I opted for simply extending the `Transform` class. That looks like this:
 
-```python3
+```python
 class SomeKindOfTransform(Transform): pass
 ```
 
 But for it do actually do anything, we need the `Transform` to have an `encodes` method; so a transform that simply squares its input might look something like this:
 
-```python3
+```python
 class SquareTransform(Transform):
     def encodes(self, x):
         return x**2
@@ -193,7 +193,7 @@ Our `Transform` is going to need some background information for every transform
 
 as well as other utilities that may be used repeatedly in the transformation process. We'll these up to be incorporated when we initialize a `NYearsTransform` object using the `__init__` function:
 
-```python3
+```python
 class NYearsTransform(Transform):
 
     # Initialization
@@ -227,7 +227,7 @@ class NYearsTransform(Transform):
 
 One important operation we'll need every time we use our transform is converting our list of neighboring nodes to an image, as [mentioned previously](#something-something). We can convert the same approach into a function and add it as a built-in part of our class:
 
-```python3
+```python
 class NYearsTransform(Transform):
     def __init__(self, adj_list, mode, img_shape=None, n=3):
         self.adj_list = adj_list
@@ -262,7 +262,7 @@ This is where we finally get to define the full behavior of the `Transform`! Thi
 
 One bonus aspect we might want to consider is differentiating 1st and 2nd order neighbors in our image. It may be useful for the model to distinguish between those when trying to make a prediction. One way we could handle this is by having a (2 \* *k*)-channel image; in other words, each set of *k*th order neighbors gets its own layer for each node. But this might make visualization a bit tricky (if we want to actually look at the "images"), because most libraries expect an image to either be 1-channel or 3-channel, and it also means larger tensors are getting passed in. Another option would be summing layers together in a way that retains the seperability of the information at the end, which is the approach I opted for. For example, if we weight first order neighbors as `0.75` and second order neighbors as `0.25`, then we can tell that a node with `0` had no connections, a node with `0.75` was exclusively a first order neighbor, one with `0.25` is exclusively a second order neighbor, and `1.0` is a node that is connected by both one *and* two hops. Here's the final implementation of the `Transform` including summed-and-weighted neighbor layers and both transform modes.
 
-```python3
+```python
 class NYearsTransform(Transform):
 
     def __init__(self, adj_list, mode, img_shape=None, n=3):
@@ -363,7 +363,7 @@ Fast.ai uses ["datablocks"](#link-to-datablock-api) for training—objects conta
 
 #### Training and validation sets
 We could use a much larger training set, but to keep training time down, I'll start with something a bit more modest. Let's say…5000 samples? We could select 5000 random combinations of nodes for our training set, but remember that the dataset is *incredibly* sparse—so if we just pick node pairs as random, we'll end up with a *lot* of "these topics do not connect", so the point where training might not even accomplish anything and the model may just assume that the correct label is always 0. A better idea is to try to intentionally balance our training set so that it has roughly equal amounts of positive and negative samples; cases where we know for sure that the nodes will connect, along with cases where they won't. So let's split our training set up into equal "positive" and "negative" groups—the `TfmdList` will want these as lists, so we'll also make sure our sample node pairs are in that format:
-```python3
+```python
 pos_size = 2500
 neg_size = 2500
 
@@ -385,7 +385,7 @@ neg_sample = list(unconnected_v_pairs[neg_sel])
 
 We'll also want to split up our samples so we have a both a training *and* a validation set. If we take the samples we've already generated (instead of generating more), we'll make sure we don't accidentally end up with duplicated pairs in both our training and validation sets (which would kind of defeat the purpose of having a validation set in the first place).
 
-```python3
+```python
 split = int(2500*0.2) # Pick an index to split at
 
 pos_train, pos_valid = pos_sample[:split],pos_sample[split:]
@@ -399,7 +399,7 @@ valid_list = pos_valid + neg_valid
 
 Now to turn the samples into `TfmdLists`, with the correct transform behavior depending on if we're training or validating:
 
-```python3
+```python
 train_tl = TfmdLists(train_list, NYearsTransform(arr_dict,mode='train',n=3))
 valid_tl = TfmdLists(valid_list, NYearsTransform(arr_dict,mode='eval',n=3))
 ```
@@ -407,7 +407,7 @@ Not a long step 😁
 
 Now that we have our transformed lists, they function just like a fast.ai `Dataset` object, which means we can actually pass them straight into a `DataLoaders` and get training!
 
-```python3
+```python
 dls = DataLoaders.from_dsets(train_tl, valid_tl)
 dls = dls.cuda() # If you're using a GPU (probably a good idea)
 ```
@@ -416,7 +416,7 @@ dls = dls.cuda() # If you're using a GPU (probably a good idea)
 
 With all of that setup done, we can create our model/learner, give it some metrics, and let it rip! The competition's performance metric is ROC AUC, so it might be handy to use that as a metric while training. Fast.ai has this as a built-in metric already, so we can just initialize it and add it straight in to our learner:
 
-```python3
+```python
 roc_auc = RocAucBinary()
 graph_learner = cnn_learner(dls,
                             xse_resnext18, # You could slot in any vision model here and compare performance. I picked `xse_resnext18` at the time.
@@ -427,7 +427,7 @@ graph_learner = cnn_learner(dls,
 ```
 And now, we train!
 
-```python3
+```python
 graph_learner.fit_one_cycle(5) # Train for 5 epochs.
 ```
 
