@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
+  <!-- Grab title from the page data and dump it here -->
+  <title>Julia Static Site Generator | Jackson Mostoller</title>
+</head>
+<body>
+  <nav id="navbar">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/notes/">Open Notes</a></li>
+  </ul>
+</nav>
+  <!-- Grab the content from the page data and dump it here, and mark it as safe -->
+  <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+  <p>Right now this site is built using <a href="https://11ty.dev">Eleventy</a>, but I'm also <em>really</em> interested in getting into the <a href="https://julialang.org">Julia</a> language. So I wonder…could I piece together something like that in Julia as a kind of getting-to-know-you project?</p>
+<p>Julia seems to have some benefits that might be helpful here:</p>
+<ol>
+<li><strong>Type dispatching</strong> could be a really interesting way to handle the semantic content of HTML. Type-dispatched style sheets? Type-dispatched templates? Could be neat!</li>
+<li>One of the great things about Eleventy is its <strong>flexibility</strong>—it doesn't want to be a framework you have to learn, it wants to be a tool that can play nicely with whatever you already know/use. That same approach could maybe be facilitated by leveraging Julia's <a href="https://techytok.com/lesson-other-languages/">interoperability</a> to let you use existing frameworks/templating systems/setups from a variety of languages (e.g. JavaScript).</li>
+</ol>
+
+</body>
+</html>
