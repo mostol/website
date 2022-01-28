@@ -422,7 +422,8 @@ graph_learner = cnn_learner(dls,
                             xse_resnext18, # You could slot in any vision model here
                             metrics=[roc_auc,accuracy],
                             pretrained=False,
-                            n_in=2,n_out=2, # We have two "channels" (one for each node's image) to pass in, hence n_in=2. And it's binary classification, so n_out=2 also.
+                            # n_in=2 for two input "channels; n_out=2 for binary classification
+                            n_in=2,n_out=2,
                             loss_func=CrossEntropyLossFlat())
 ```
 And now, we train!

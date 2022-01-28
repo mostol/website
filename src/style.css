@@ -1,6 +1,22 @@
-body {
-  color: black;
-  font-size: 1rem;
+@font-face {
+  font-family: "Newsreader";
+  src: url('../fonts/Newsreader.woff2');
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url('../fonts/Newsreader-Italic.woff2');
+  font-style: italic;
+}
+
+html {
+  font-family: "Newsreader", serif;
+  font-size: 1.0625rem;
+}
+
+p {
+  font-variation-settings: 'opsz' 10;
+  line-height: 1.5em;
 }
 
 pre {
