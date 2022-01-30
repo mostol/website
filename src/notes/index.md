@@ -1,8 +1,9 @@
 ---
-layout: post.njk
-title: Open Notes Home
+layout: page.njk
+title: Open notes collection
 ---
-This is the home for my "Open Notes". These are unpolished notes or ideas or blogs-in-progress that will ideally make their way into something more fleshed out—but for now, they're yours to read.
+# {{ title }}
+; or, *rerum vulgarium fragmenta*. A pile of digital loose leaf notes. 📓
 
 <ul>
 {%- for note in collections.notes -%}
