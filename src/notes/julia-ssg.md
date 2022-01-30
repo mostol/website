@@ -2,6 +2,7 @@
 layout: post.njk
 title: Julia Static Site Generator
 tags: ["notes"]
+date: Last Modified
 ---
 Right now this site is built using [Eleventy](https://11ty.dev), but I'm also *really* interested in getting into the [Julia](https://julialang.org) language. So I wonder…could I piece together something like that in Julia as a kind of getting-to-know-you project?
 
