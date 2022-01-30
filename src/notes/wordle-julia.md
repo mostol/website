@@ -2,6 +2,7 @@
 layout: post.njk
 title: Wordle Solver (Julia?)
 tags: ["notes"]
+date: Last Modified
 ---
 A magic Wordle puzzle solver?
 
