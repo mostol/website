@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-control" content="public">
+  <meta name="theme-color" content="#ffbd16">
+  <meta name="color-scheme" content="light dark">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/style.css">
   <!-- Grab title from the page data and dump it here -->
@@ -10,17 +13,36 @@
 </head>
 <body>
   <nav id="navbar">
+  <a class="logotype">Jackson Mostoller</a>
   <ul>
     <li><a href="/">Home</a></li>
-    <li><a href="/about/">About</a></li>
     <li><a href="/blog/">Blog</a></li>
     <li><a href="/notes/">Open Notes</a></li>
   </ul>
 </nav>
   <!-- Grab the content from the page data and dump it here, and mark it as safe -->
   <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-  <h1>Hi, I'm Jackson</h1>
-<p>I'm a Human Language Technology student at the University of Arizona. Excuse the mess—this website is currently 🚧 <em>under construction</em> 🚧, but feel free to look around!</p>
-
+  <main>
+  <h2>About me</h2>
+<div class="cblock">
+<p>I'm a Human Language Technology student at the University of Arizona. Some other details are:</p>
+<ul>
+<li>BA in Comparative Literature (plus a Mathematics minor)</li>
+<li>Interested in language, deep learning, graphs, information retrieval, web design/development, and wrapping my head around new things.</li>
+<li>I live in Phoenix, AZ with my wife and two heelers (one of each flavor).</li>
+<li>I'm looking for an internship 😉</li>
+</ul>
+<p>You can read more about what I've been up to on my <a href="/blog">blog</a> or in my <a href="/notes">notes</a>.</p>
+</div>
+<h2><a class="hidden" href="/blog">Blog</a></h2>
+<div class="cblock">
+<ul><li><a href="/notes/adventures-in-graphs/">Adventures in Graphs, Part 1: (Not) Everything's a Vision Problem</a></li></ul>
+</div>
+<h2><a class="hidden" href="/notes">Open notes</a></h2>
+<div class="cblock">
+<p>These are loose ideas, projects, or blogs-in-progress in various states of presentability. Ideally they might make their way to the <a href="/blog">blog</a>—but for now, they're yours to read!</p>
+<ul><li><a href="/notes/a-new-note-approach/">Notes on notes</a></li><li><a href="/notes/functional-neural-networks/">Neural Nets: A Function-al View</a></li><li><a href="/notes/handshake-proof-of-work/">Handshake</a></li><li><a href="/notes/julia-ssg/">Julia Static Site Generator</a></li><li><a href="/notes/python-perl-overloading/">Type Overloading, Operator Coercion, Python & Perl</a></li><li><a href="/notes/temporal-graph-matmul-connectivity/">Sparse Modified Matrix Multiplication (for 2nd Order Temporal Graph Neighbors)</a></li><li><a href="/notes/wordle-julia/">Wordle Solver (Julia?)</a></li></ul>
+</div>
+  </main>
 </body>
 </html>

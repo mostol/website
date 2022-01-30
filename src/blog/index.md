@@ -1,7 +1,8 @@
 ---
 layout: page.njk
-title: Blog Home
+title: Blog posts
 ---
+# {{ title }}
 This is the main page for my blog, which is where more polished thoughts go to…live.
 
 <ul>
