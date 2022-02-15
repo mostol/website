@@ -4,7 +4,7 @@ title: Eatiquette ingredient task overview
 date: 2022-02-14
 ---
 
-<divclass="cblock">
+<div class="cblock">
 With the massive proliferation of machine learning techniques, there are probably infinite possible approaches to the ingredient-mapping task. After some consideration, I feel that some kind of transformer-based approach might turn out to be among the easiest to implement and most elegant.
 
 Transformer-centric models are doing incredible things right now, and it wouldn't be all that difficult to get a transformer up-and-running that could accomplish this labelling task with a good amount of accuracy. But what would that look like?
