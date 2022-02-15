@@ -10,6 +10,7 @@ With the massive proliferation of machine learning techniques, there are probabl
 Transformer-centric models are doing incredible things right now, and it wouldn't be all that difficult to get a transformer up-and-running that could accomplish this labelling task with a good amount of accuracy. But what would that look like?
 
 My inital instict would perhaps be to look at some kind of classifier, i.e. "tomato sauce" and "tomato paste" both get classified as `tomato`, "baking soda" and "SODIUM BICARBONATE" are classified as `sodium bicarbonate`, and so forth. The issue with this approach is that we're looking at *at least* 3000-4000 "classes"—which would mean we would need at least a few examples of sometimes-very-rare ingredients, because instrisically a class' label is meaningless, so we would need concrete examples in each instance.
+</div>
 
 ## A Sequence-to-sequence approach
 <div class="cblock">
