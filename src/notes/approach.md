@@ -1,7 +1,7 @@
 ---
 layout: post.njk
 title: Eatiquette ingredient task overview
-date: 14-02-2022
+date: 2022-02-14
 ---
 With the massive proliferation of machine learning techniques, there are probably infinite possible approaches to the ingredient-mapping task. After some consideration, I feel that some kind of transformer-based approach might turn out to be among the easiest to implement and most elegant.
 
