@@ -55,6 +55,14 @@ Other things to improve:
 * We probably want to narrow it down to items with *one* pronunciation, or we can't quite tell if we have the right pronunciation transcribed. (If we can find a way to differentiate e.g. between US and UK pronunciations and match each with the correct transcription, that'd be 💯)
 * There are (generally) two transcriptions: a [phonemic and a phonetic](https://linguistics.stackexchange.com/questions/301/when-should-one-use-slashes-or-square-brackets-when-transcribing-in-ipa), the phonemic (in square brackets) being the more narrow one in general. It's maybe preferable to grab that one but then again—why not both? It might be handy to have either option available, or to compare and see which is a more successful basis for a model.
 
+```
 https://upload.wikimedia.org/wikipedia/commons/6/63/LL-Q1321_%28spa%29-AdrianAbdulBaha-juez.wav
 https://upload.wikimedia.org/wikipedia/commons/6/63/LL-Q1321_%28spa%29-AdrianAbdulBaha-juez.wav
 https://upload.wikimedia.org/wikipedia/commons/transcoded/6/63/LL-Q1321_%28spa%29-AdrianAbdulBaha-juez.wav
+```
+
+Okay! So, I *finally* know how to get a URL from a WikiMedia Commons file name (thanks [StackOverflow](https://stackoverflow.com/questions/30781455/how-to-get-image-url-in-wiki-api)). So what I want is this:
+
+```
+https://commons.wikimedia.org/wiki/Special:FilePath/LL-Q1321_%28spa%29-AdrianAbdulBaha-juez.wav
+```
