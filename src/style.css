@@ -1,12 +1,12 @@
 @font-face {
-  font-family: "Newsreader";
-  src: url('../fonts/Newsreader.woff2');
+  font-family: "Fraunces";
+  src: url('../fonts/Fraunces.woff2');
   font-display: optional;
 }
 
 @font-face {
-  font-family: "Newsreader";
-  src: url('../fonts/Newsreader-Italic.woff2');
+  font-family: "Fraunces";
+  src: url('../fonts/Fraunces-Italic.woff2');
   font-style: italic;
   font-display: optional;
 }
@@ -30,6 +30,17 @@
   }
 }
 
+@keyframes thicken {
+  0% {
+    font-weight: 100;
+    opacity: 0%;
+  }
+  100% {
+    font-wewight: 1000;
+    opacity: 100%;
+  }
+}
+
 nav#navbar {
   padding: 0.75em;
   text-align: end;
@@ -44,10 +55,16 @@ nav#navbar > a.logotype {
   font-size: 2.2rem;
   padding: 0;
   margin-top: 0.5em;
-  font-weight: 1000;
+  font-variation-settings: "SOFT" 0, "opsz" 72, "WONK" 1;
+  font-weight: 100;
+  transition: font-weight 0.5s;
 }
 nav#navbar > a.logotype::after {
   all: unset;
+}
+nav#navbar > a.logotype:hover {
+  font-weight: 500;
+
 }
 
 nav#navbar > ul {
@@ -60,9 +77,9 @@ body {
   max-width: 7in;
   background: hsl(0,0%,var(--bg-basis));
   color: hsla(0,0%,var(--txt-basis),0.8);
-  font-family: "Newsreader", serif;
+  font-family: "Fraunces", serif;
+  font-variation-settings: "SOFT" 0, "opsz" 9, "WONK" 1;
   font-weight: 350;
-  font-variation-settings: 'opsz' 10;
   font-size: 1.25rem;
 }
 
@@ -74,21 +91,30 @@ a {
   color: inherit;
   text-decoration: none;
   border-bottom: 0.05em solid hsla(0,0%,var(--txt-basis),0.8);;
-  transition: border 0.3s;
+  transition: border 0.15s;
 }
 
 a.hidden {
   border-bottom: 0 solid transparent;
-  transition: border 0.3s;
+  transition: border 0.15s;
 }
 
 a:hover, a:focus {
   border-bottom: 0.15em solid var(--yellow);
 }
 
-body > h1,h2,h3,h4,h5,h6 {
+main > h1,h2,h3,h4,h5,h6 {
   padding: 0 1rem;
+  margin: 1rem 0;
   font-weight: 1000;
+  
+  line-height: 1;
+  font-variation-settings: "opsz" 144, "WONK" 0, "SOFT" 0;
+  animation: 0.75s thicken;
+}
+
+main > h1 {
+  font-size: 4em;
 }
 
 div.cblock {
