@@ -167,3 +167,7 @@ code > span.token.function {
 code > span.token.punctuation {
   font-weight: 300;
 }
+
+ul.socials {
+  font-weight: 1000;
+}
