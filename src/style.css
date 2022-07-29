@@ -33,11 +33,9 @@
 @keyframes thicken {
   0% {
     font-weight: 100;
-    opacity: 0%;
   }
   100% {
     font-wewight: 1000;
-    opacity: 100%;
   }
 }
 
