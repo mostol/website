@@ -33,11 +33,9 @@
 @keyframes thicken {
   0% {
     font-weight: 100;
-    opacity: 0%;
   }
   100% {
     font-wewight: 1000;
-    opacity: 100%;
   }
 }
 
@@ -168,4 +166,8 @@ code > span.token.function {
 
 code > span.token.punctuation {
   font-weight: 300;
+}
+
+ul.socials {
+  font-weight: 1000;
 }
