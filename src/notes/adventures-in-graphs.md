@@ -2,6 +2,8 @@
 layout: post.njk
 title: "Adventures in Graphs, Part 1: (Not) Everything's a Vision Problem"
 tags: ["blog"]
+date: 2022-02-02
+updated: 2022-08-05
 ---
 <div class="cblock">
 
@@ -123,7 +125,7 @@ t = 8000 # Set time cutoff to day 8000
  adj_list[src_node][0][adj_list[src_node][1] < t]]
 ```
 
-There is also a [much more convoluted way](#altered-matrix-multiplication) of doing this that entails implementing an altered matrix multiplication for a sparsely-described adjacency matrix, leveraging the fact that [the square of an adjacency matrix represents the number of walks of length two from one node to another](https://arxiv.org/abs/1207.3122). I originally opted for this approach out of fear that Python's iteration would be too slow with the method above for practical use during training, but after testing it out while writing this post…the above list comprehension is actually faster. Here's my final function to get a node's first and second order neighbors (with built-in functionality for getting up to *k* total layers of neighbors, although exponential list growth with this approach makes any *k* > 2 a bit problematic):
+There is also a [much more convoluted way](#altered-matrix-multiplication) of doing this that entails implementing an altered matrix multiplication for a sparsely-described adjacency matrix, leveraging the fact that [the square of an adjacency matrix represents the number of walks of length two from one node to another](https://math.stackexchange.com/questions/736863/power-of-an-adjacency-matrix). I originally opted for this approach out of fear that Python's iteration would be too slow with the method above for practical use during training, but after testing it out while writing this post…the above list comprehension is actually faster. Here's my final function to get a node's first and second order neighbors (with built-in functionality for getting up to *k* total layers of neighbors, although exponential list growth with this approach makes any *k* > 2 a bit problematic):
 
 ```python
 def get_neighbors(adj_list, node, t=None, k=2):
