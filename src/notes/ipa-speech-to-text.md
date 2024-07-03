@@ -2,7 +2,7 @@
 layout: post.njk
 title: IPA Speech-to-Text Model…?
 tags: ["notes"]
-date: Last Modified
+date: 2022-01-29
 ---
 Here's a thought: we've got [speech-to-text](https://huggingface.co) models galore. We can take audio input from dozens (now hundreds?) of languages and feed it into a model, and out comes some text that matches. [What a time to be alive!](https://twitter.com/twominutepapers) But hey, those strings of text that the models spit out—what if those were *IPA* letters, instead of specifically Kazakh or French or Navajo or another particular alphabet's representation? That might be neat! Let's see what we can do...
 
