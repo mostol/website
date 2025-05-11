@@ -1,7 +1,8 @@
 ---
 layout: post.njk
 title: Wordle Solver (Julia?)
-tags: ["notes"]
+tags:
+    - "post"
 date: 2022-01-29
 ---
 A magic Wordle puzzle solver?
