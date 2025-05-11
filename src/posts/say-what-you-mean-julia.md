@@ -1,7 +1,8 @@
 ---
 layout: post.njk
 title: "Say What You Mean: Generic Julia Coding"
-tags: ["blog"]
+tags:
+    - "post"
 date: 2022-07-29
 ---
 ⚠️ This post is still in-progress.
