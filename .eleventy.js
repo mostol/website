@@ -18,13 +18,23 @@ module.exports = function(eleventyConfig) {
   // Custom date filter; see https://karlynelson.com/posts/how-to-handle-dates-in-11ty/
   // I'll note that I don't like having to specially-define this here,
   // and also that the parameters have to be hard-coded...
-  eleventyConfig.addFilter("postDate", (dateObj) => {
-    const formatter = new Intl.DateTimeFormat(
-      "en-US",
-      {dateStyle: "short"}
-    )
-    return formatter.format(dateObj);
-  });
+  eleventyConfig.addFilter(
+    "formatDate", 
+    (dateObj, locales, options) => {
+      const formatter = new Intl.DateTimeFormat(
+        locales,
+        options
+      )
+      return formatter.format(dateObj);
+    }
+  );
+
+  eleventyConfig.addFilter(
+    "dateISO", 
+    (dateObj) => {
+      return dateObj.toISOString();
+    }
+  );
 
   return {
     // When a passthrough file is modified, rebuild the pages:

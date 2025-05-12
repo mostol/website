@@ -1,12 +1,97 @@
+/******************
+* Global settings *
+******************/
+
+/* Every Layout scaling ratios */
+:root {
+  --ratio: 1.5;
+  --s-6: calc(var(--s-5) / var(--ratio));
+  --s-5: calc(var(--s-4) / var(--ratio));
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: 1em;
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));
+  --s3: calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));
+  --s5: calc(var(--s4) * var(--ratio));
+}
+
+:root {
+  /* Global CSS variables */
+  /* Colors */
+  --yellow: oklch(0.85 0.185 82.5); /* hsl(50,100%,50%) ? */
+
+  --dark: oklch(0.25 0 82.5);
+  --light: oklch(0.99 0.005 82.5);
+
+  --text-color: var(--dark);
+  --background-color: var(--light);
+
+  /* Thicknesses */
+  /* --stroke: var(--s-4); */
+
+  /* Units and measures */
+  --measure: 60ch;
+
+  /* Default spasing between flowing elements. */
+  --spacing: var(--s0)
+}
+
+/************
+* CSS RESET *
+************/
+
+/* Use border-box everywhere */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, h5, h6,
+p, ul, ol, menu, figure,
+blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.25;
+  margin: 0;
+
+  text-shadow: 0 0 0; /* This is to fix a weird safari doubled-text bug */
+}
+
+/* Set max inline width (e.g. for text wraps) */
+* {
+  max-inline-size: var(--measure);
+}
+
+html, body, div, section, header, nav, main, footer {
+  /* Allow non-text, box-like lements to be full-width */
+  max-inline-size: none;
+}
+
+
+/********
+* Fonts *
+********/
+
 @font-face {
-  font-family: "Fraunces";
-  src: url('../fonts/Fraunces.woff2');
+  font-family: "Inclusive";
+  src: url('../fonts/InclusiveSans[wght].ttf');
+  font-style: normal;
   font-display: optional;
 }
 
 @font-face {
-  font-family: "Fraunces";
-  src: url('../fonts/Fraunces-Italic.woff2');
+  font-family: "Inclusive";
+  src: url('../fonts/InclusiveSans-Italic[wght].ttf');
   font-style: italic;
   font-display: optional;
 }
@@ -17,119 +102,243 @@
   font-display: optional;
 }
 
-:root {
-  --bg-basis: 100%;
-  --txt-basis: 0%;
-  --yellow: #ffbd16; /* hsl(50,100%,50%) ? */
-}
+
+/************
+* Dark mode *
+************/
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-basis: 12%;
-    --txt-basis: 100%;
+    --text-color: var(--light);
+    --background-color: var(--dark);
   }
 }
 
-@keyframes thicken {
+/*************
+* Animations *
+*************/
+
+/* @keyframes thicken {
   0% {
     font-weight: 100;
   }
   100% {
-    font-wewight: 1000;
+    font-weight: 1000;
+  }
+} */
+
+
+/********************
+* Layout components *
+********************/
+
+/** Sidebar layout **/
+.sidebar-block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+
+  & > :first-child {
+    flex-grow: 1;
+  }
+
+  & > :last-child {
+    flex-basis: 0;
+    flex-grow: 999;
+    min-inline-size: 50%;
   }
 }
 
-nav#navbar {
-  padding: 0.75em;
-  text-align: end;
-  font-size: 1rem;
-  position: sticky;
-  top: 0;
+/** Cluster layout **/
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing);
 }
 
-nav#navbar > a.logotype {
-  all: unset;
-  display: inline-block;
-  font-size: 2.2rem;
-  padding: 0;
-  margin-top: 0.5em;
-  font-variation-settings: "SOFT" 0, "opsz" 72, "WONK" 1;
-  font-weight: 100;
-  transition: font-weight 0.5s;
+/** Center layout **/
+.center {
+  box-sizing: content-box;
+  margin-inline: auto;
 }
-nav#navbar > a.logotype::after {
-  all: unset;
+
+/** Wide layout **/
+.widen {
+  display: flex;
+  justify-content: space-between;
 }
-nav#navbar > a.logotype:hover {
+
+/** Stack layout **/
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--spacing)
+}
+
+/**********
+* Styling *
+**********/
+
+:root {
+  /* Global styling */
+  font-family: "Inclusive", sans-serif;
+  font-size: calc(1rem + 0.25vw);
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Inclusive", sans-serif;
   font-weight: 500;
-
-}
-
-nav#navbar > ul {
-  margin-top: 0;
-  list-style-type: none;
+  /* color: var(--yellow); */
+  
 }
 
 body {
-  margin: auto;
-  max-width: 7in;
-  background: hsl(0,0%,var(--bg-basis));
-  color: hsla(0,0%,var(--txt-basis),0.8);
-  font-family: "Fraunces", serif;
-  font-variation-settings: "SOFT" 0, "opsz" 9, "WONK" 1;
-  font-weight: 350;
-  font-size: 1.25rem;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+/* Main content */
+body > * {
+  /* Horizontal padding */
+  padding-inline: var(--s0);
 }
 
 strong {
-  font-weight: 550;
+  font-weight: 500;
 }
 
+/* Unordered list styling */
+ul {
+  list-style-type: square;
+}
+
+/** Global links **/
 a {
   color: inherit;
   text-decoration: none;
-  border-bottom: 0.05em solid hsla(0,0%,var(--txt-basis),0.8);;
-  transition: border 0.15s;
+  border-bottom: 0.075rem solid var(--text-color);
+  transition: border 0.125s;
 }
 
 a.hidden {
   border-bottom: 0 solid transparent;
-  transition: border 0.15s;
+  transition: border 0.125s;
 }
 
 a:hover, a:focus {
-  border-bottom: 0.15em solid var(--yellow);
+  border-bottom: 0.2em solid var(--yellow);
 }
 
-main > h1,h2,h3,h4,h5,h6 {
-  padding: 0 1rem;
-  margin: 1rem 0;
-  font-weight: 1000;
-  
+a:visited {
+  text-decoration: line-through;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 0.05rem;
+}
+
+/** Logotype **/
+a.logotype {
+  all: unset;
+  font-weight: 800;
+
+  /* color: var(--yellow); */
+
+  font-family: "Recursive", monospace;
+  font-variation-settings: "MONO" 1;
+
+  &:hover {
+    color: var(--yellow);
+  }
+}
+
+/* Nav bar */
+nav#navbar {
+  padding-block: var(--s0);
   line-height: 1;
-  font-variation-settings: "opsz" 144, "WONK" 0, "SOFT" 0;
-  animation: 0.75s thicken;
+
+  /* De-style ul in navbar */
+  & ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Ensure links are unstyled */
+  & a {
+    text-decoration: none;
+  }
 }
 
-main > h1 {
-  font-size: 4em;
+/** General article styles **/
+article {
+  --spacing: var(--s-1);
+  hyphens: auto;
+
+  padding-block: var(--s1);
+
+  & h1, h2, h3, h4, h5, h6 {
+    line-height: 1;
+    font-size: var(--s0);
+    padding-block-start: var(--s0);
+  }
+
+  /* Header section stylings */
+  & > header {
+    & > time {
+      /* Not sure if this is chill? */
+      float: inline-start;
+      font-style: italic;
+      font-size: smaller;
+      text-transform: uppercase;
+    }
+  }
+
+  & h1 {
+    font-size: var(--s2);
+    /* font-weight: 1000; */
+    word-break: break-all;
+    text-align: justify;
+    text-transform: uppercase;
+    padding-block: 0;
+
+    border-block-end: var(--s-5) solid var(--text-color);
+  }
+
+  & h2 {
+    /* font-weight: 1000; */
+    /* word-break: break-all; */
+    text-transform: uppercase;
+
+    border-block-end: var(--s-6) solid var(--text-color);
+  }
+
+  & h3 {
+    border-block-end: var(--s-6) dotted var(--text-color);
+  }
+
 }
 
-div.cblock {
-  border-left: 0.175rem solid var(--yellow);
-  padding: 0 1rem;
-  line-height: 1.65;
-}
+/*
+  == Main body layout ==
+  The main body content has a modified "sidebar" layout,
+  where the title appears on the side if there's enough width,
+  and if not everything gets stacked vertically.
+*/
+/* main {
+
+} */
 
 /* Code block styling */
 
 pre {
   box-sizing: border-box;
   max-width: 100%;
-  overflow-x: scroll;
+  overflow-x: auto;
   line-height: normal;
-  background-color: hsla(0,0%,var(--txt-basis),0.1);
-  padding: 1.5em 1em;
+  background-color: oklch(from var(--text-color) l 0 h / 0.1);
+  color: var(--text-color);
+  padding: var(--s0) var(--s0);
 }
 
 pre::after {
@@ -143,7 +352,7 @@ code {
   font-family: "Recursive", monospace;
   font-variation-settings: "MONO" 1;
   font-weight: 400;
-  font-size: 0.8em;
+  font-size: 0.8rem;
   line-height: 0;
 }
 
@@ -166,8 +375,4 @@ code > span.token.function {
 
 code > span.token.punctuation {
   font-weight: 300;
-}
-
-ul.socials {
-  font-weight: 1000;
 }

@@ -1,5 +1,5 @@
 ---
-layout: page.njk
+layout: splash.njk
 title: Topics
 ---
 # {{ title }}

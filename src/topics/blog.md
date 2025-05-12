@@ -1,5 +1,5 @@
 ---
-layout: page.njk
+layout: splash.njk
 title: Blogs
 tags:
 - "topic"
@@ -12,7 +12,7 @@ A place for more polished thoughts.
 {%- for blog in collections.blog reversed -%}
   <li>
     <a href="{{ blog.url }}">{{ blog.data.title }}</a>
-    <small>({{ blog.data.date | postDate }})</small>
+    <small>({{ blog.data.date | formatDate }})</small>
   </li>
 {%- endfor -%}
 </ul>
