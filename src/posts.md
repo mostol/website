@@ -1,5 +1,5 @@
 ---
-layout: page.njk
+layout: splash.njk
 title: Posts
 ---
 # {{ title }}
@@ -11,7 +11,7 @@ This is the firehose—to help myself actually write stuff out, the bar is fairl
 {%- for post in collections.post reversed -%}
   <li>
     <a href="{{ post.url }}">{{ post.data.title }}</a>
-    <small>({{ post.data.date | postDate }})</small>
+    <small>({{ post.data.date | formatDate }})</small>
   </li>
 {%- endfor -%}
 </ul>

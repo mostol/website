@@ -1,10 +1,8 @@
 ---
-layout: page.njk
+layout: splash.njk
 title: Home
 ---
-## About me
-Hello!
-
+# Hello
 I'm <strong>Jackson Mostoller</strong> <em>(he/him)</em>, a person doing software stuff in Phoenix, Arizona (i.e. Akimel O'odham and Piipaash land).
 
 In general, I'm interested in systems that make wrangling information more accessible and humanistic.
