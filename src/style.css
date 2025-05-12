@@ -25,7 +25,7 @@
   --yellow: oklch(0.85 0.185 82.5); /* hsl(50,100%,50%) ? */
 
   --dark: oklch(0.25 0 82.5);
-  --light: oklch(0.99 0.005 82.5);
+  --light: oklch(0.99 0.0 82.5);
 
   --text-color: var(--dark);
   --background-color: var(--light);
@@ -186,6 +186,12 @@ dl.metas {
   font-size: smaller;
 }
 
+dl.iconlist {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  column-gap: 0.25rem;
+}
+
 /**********
 * Styling *
 **********/
@@ -206,6 +212,10 @@ h1, h2, h3, h4, h5, h6 {
 body {
   color: var(--text-color);
   background-color: var(--background-color);
+
+  /* Flex layout for better header/footer control */
+  display: flex;
+  flex-direction: column;
 }
 
 /* Main content */
@@ -277,6 +287,19 @@ nav#navbar {
   & a {
     text-decoration: none;
   }
+}
+
+/* Footer */
+footer#footer {
+  margin-block-start: auto; /* To stick it to the bottom */
+  margin-inline: 0;
+  padding-block: var(--s-2);
+
+  font-size: 0.75rem;
+  
+  border-block-start: var(--s-6) dashed var(--text-color);
+  background-image: radial-gradient(var(--text-color) 0.025em, var(--background-color) 0.025em);
+  background-size: 0.4em 0.4em;
 }
 
 /** General article styles **/
