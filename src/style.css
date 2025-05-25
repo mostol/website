@@ -222,6 +222,12 @@ a {
   transition: border 0.125s;
 }
 
+a:visited {
+  text-decoration: line-through;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 0.05rem;
+}
+
 a.hidden {
   border-bottom: 0 solid transparent;
   transition: border 0.125s;
@@ -229,12 +235,6 @@ a.hidden {
 
 a:hover, a:focus {
   border-bottom: 0.2em solid var(--yellow);
-}
-
-a:visited {
-  text-decoration: line-through;
-  text-decoration-style: dotted;
-  text-decoration-thickness: 0.05rem;
 }
 
 /** Logotype **/
