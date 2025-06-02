@@ -2,5 +2,8 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.1.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.2.2"
+  },
+  "scripts": {
+    "clone-notes": "curl -s -L https://git.disroot.org/mostol/notes/archive/main.tar.gz | tar -C src --strip-components=1 -xzf - notes/link notes/post"
   }
 }
