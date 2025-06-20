@@ -10,7 +10,9 @@ This is the firehose—to help myself actually write stuff out, the bar is fairl
 <ul>
 {%- for post in collections.post reversed -%}
   <li>
-    <a href="{{ post.url }}">{{ post.data.title }}</a>
+    <a href="{{ post.url }}">
+    {% if post.data.title %}{{ post.data.title }}{% elsif post.page.fileSlug %}{{ post.page.fileSlug }}{% endif %}
+    </a>
     <small>({{ post.data.date | formatDate }})</small>
   </li>
 {%- endfor -%}
