@@ -3,12 +3,6 @@
 {% block body %}
 
 <article class="center stack">
-<header>
-<h1>{{ title }}</h1>
-<time datetime="{{ page.date | dateISO }}">
-{{ page.date | formatDate("en-US", {dateStyle: "long"}) }}
-</time>
-</header>
 {{ content | safe }}
 </article>
 {% endblock %}

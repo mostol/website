@@ -1,7 +1,0 @@
----
-layout: post.njk
-title: Type Overloading, Operator Coercion, Python & Perl
-tags: ["notes"]
-date: 2022-01-29
----
-Some dichotomies on Python and Perl, based on some discussion-induced observations.

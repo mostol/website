@@ -1,37 +1,21 @@
 ---
-layout: page.njk
+layout: splash.njk
 title: Home
 ---
-## About me
-<div class="cblock">
+# Hello
+I'm <strong>Jackson Mostoller</strong> <em>(he/him)</em>, a person doing software stuff in Phoenix, Arizona (i.e. Akimel O'odham and Piipaash land).
 
-I'm a [Human Language Technology](https://linguistics.arizona.edu/master-science-human-language-technology-hlt) student at the University of Arizona. Some other tidbits:
-- BA in Comparative Literature
-- Interested in language, deep learning, graphs, information retrieval, and wrapping my head around new things.
-- I live in Phoenix, AZ with my wife and two [heelers](https://en.wikipedia.org/wiki/Australian_Cattle_Dog) (one of each flavor).
-- I'm looking for an work! If LinkedIn is your thing, you can find my profile [here](https://linkedin.com/in/jacksonmostoller).
+In general, I'm interested in systems that make wrangling information more accessible and humanistic.
 
-You can read more about what I've been up to on my [blog](/blog) or in my [notes](/notes).
+I'm currently a Machine Learning Engineer at [Cohere Health](https://coherehealth.com).
 
-</div>
+Some more fun facts:
+- My BA is in Comparative Literature, and I also have an MS in [Human Language Technology](https://linguistics.arizona.edu/master-science-human-language-technology-hlt). I'm very grateful for both!
+- I'm into the desert, democracy, music, FOSS, abstracting things, casual pizza criticism, websites, indie games, Mazovian socio-econimcs, anything tomatillo, etc.
 
-<h2><a class="hidden" href="/blog">Blog</a></h2>
-<div class="cblock">
+## This site
+You can think of this space like something in between a [microblog](https://en.wikipedia.org/wiki/Microblogging) and a normal blog. (…A milliblog?) Posts may be short, incomplete, or incoherent, but they're here!
 
-<ul>
-{%- for blog in collections.blog -%}
-  <li><a href="{{ blog.url }}">{{ blog.data.title }}</a></li>
-{%- endfor -%}
-</ul>
-</div>
+They might be further organized into more focused collections listed on the [topics page](/topics/).
 
-<h2><a class="hidden" href="/notes">Open notes</a></h2>
-<div class="cblock">
-
-These are loose ideas, projects, or blogs-in-progress in various states of presentability. Ideally they might make their way to the [blog](/blog)—but for now, they're yours to read!
-<ul>
-{%- for note in collections.notes reversed -%}
-  <li><a href="{{ note.url }}">{{ note.data.title }}</a>, <small><code>{{ note.date.toLocaleDateString }}</code></small></li>
-{%- endfor -%}
-</ul>
-</div>
+You can find the full collection of posts [here](/posts/).

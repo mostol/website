@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Cache-control" content="public">
-  <meta name="theme-color" content="#ffbd16">
+  <meta name="theme-color" content="oklch(0.25 0 82.5)">
   <meta name="color-scheme" content="light dark">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/style.css">
-  <!-- Grab title from the page data and dump it here -->
+  {# Grab title from the page data and dump it here #}
   <title>{% block title %}{%endblock%} | Jackson Mostoller</title>
 </head>
 <body>
   {% include  "_nav.njk" %}
-  <!-- Grab the content from the page data and dump it here, and mark it as safe -->
-  <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+  {# Grab the content from the page data and dump it here, and mark it as safe #}
+  {# Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe #}
   <main>
   {% block body %}{% endblock %}
   </main>

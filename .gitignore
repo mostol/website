@@ -1,1 +1,9 @@
 .DS_Store
+_site/
+node_modules
+
+# Don't track *any* directories in src/ unless explicitly
+# opted-in (so we can pull in content without accidentally
+# tracking all of it)
+src/*/
+!src/_includes/
