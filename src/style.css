@@ -176,6 +176,16 @@ html, body, div, section, header, nav, main, footer {
   gap: var(--spacing)
 }
 
+
+/* Lost the thread here, but gotta style the metadata under links */
+dl.metas {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  column-gap: 0.25rem;
+
+  font-size: smaller;
+}
+
 /**********
 * Styling *
 **********/
