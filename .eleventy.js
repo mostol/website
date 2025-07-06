@@ -40,6 +40,14 @@ module.exports = function(eleventyConfig) {
     }
   );
 
+  eleventyConfig.addFilter(
+    "regex_extract", 
+    (str, pattern) => {
+      const re = new RegExp(pattern);
+      return re.exec(str);
+    }
+  );
+
   // Create 'post' and 'link' collections based on whatever is in the directories.
   // h/t https://www.mattmcadams.com/posts/2022/working-with-11ty-collections/
   function setLayout(item, layout) { // item: obj, layout: string
