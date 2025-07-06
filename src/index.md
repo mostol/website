@@ -10,7 +10,7 @@ In general, I'm interested in systems that make wrangling information more acces
 I'm currently a Machine Learning Engineer at [Cohere Health](https://coherehealth.com).
 
 Some more fun facts:
-- My BA is in Comparative Literature, and I also have an MS in [Human Language Technology](https://linguistics.arizona.edu/master-science-human-language-technology-hlt). I'm very grateful for both!
+- My BA is in Comparative Literature, and I also have an MS in [Human Language Technology](https://linguistics.arizona.edu/ms-hlt). I'm very grateful for both!
 - I'm into the desert, democracy, music, FOSS, abstracting things, casual pizza criticism, websites, indie games, Mazovian socio-econimcs, anything tomatillo, etc.
 
 ## This site
