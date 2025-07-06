@@ -5,9 +5,17 @@
 <article class="center stack">
 <header>
 <h1>{{ title }}</h1>
-<time datetime="{{ page.date | dateISO }}">
-{{ page.date | formatDate("en-US", {dateStyle: "long"}) }}
-</time>
+<dl class="metas">
+    <dt>⊕</dt>
+    <dd>{{ created | formatDate("en-US", {dateStyle: "medium", timeStyle: "short"}) }}</dd>
+    {% if (modified > created) %}
+    <dt>Δ</dt>
+    <dd>{{ modified | formatDate("en-US", {dateStyle: "medium", timeStyle: "short"}) }}</dd>{% endif %}{% if tags %}
+    <dt>⌗</dt>
+    <dd>
+    {{ tags | join(" ") }}
+    </dd>{% endif %}
+</dl>
 </header>
 {{ content | safe }}
 </article>
