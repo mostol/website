@@ -34,7 +34,7 @@
   /* --stroke: var(--s-4); */
 
   /* Units and measures */
-  --measure: 60ch;
+  --measure: 70ch;
 
   /* Default spasing between flowing elements. */
   --spacing: var(--s0)
@@ -61,7 +61,7 @@ blockquote, dl, dd {
 /* Set core body defaults */
 body {
   min-height: 100vh;
-  line-height: 1.25;
+  line-height: 1.5;
   margin: 0;
 
   text-shadow: 0 0 0; /* This is to fix a weird safari doubled-text bug */
