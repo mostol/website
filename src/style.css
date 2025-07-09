@@ -35,7 +35,7 @@
   /* --hairline: 0.05rem; */
 
   /* Units and measures */
-  --measure: 70ch;
+  --measure: 55ch;
 
   /* Default spasing between flowing elements. */
   --spacing: var(--s0)
