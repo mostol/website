@@ -409,7 +409,7 @@ code > span.token.keyword {
 
 code > span.token.function {
   font-weight: 750;
-  font-variation-settings: "MONO" 1, "CASL" 1;
+  font-variation-settings: "MONO" 1;
 }
 
 code > span.token.punctuation {
