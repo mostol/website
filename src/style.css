@@ -371,8 +371,7 @@ pre {
 
   padding: var(--s0) var(--s0);
 
-  border: 0.1rem solid oklch(from var(--text-color) l c h / 0.5);
-  border-radius: var(--s-3);
+  border: 0.075em solid var(--text-color);
 }
 
 /*
