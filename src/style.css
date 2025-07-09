@@ -259,12 +259,14 @@ a:hover, a:focus {
 /** Logotype **/
 a.logotype {
   all: unset;
-  font-weight: 800;
+  font-weight: 400;
 
   /* color: var(--yellow); */
 
   font-family: "Recursive", monospace;
   font-variation-settings: "MONO" 1;
+
+  transition: 0.2s;
 
   &:hover {
     color: var(--yellow);
