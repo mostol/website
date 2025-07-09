@@ -299,10 +299,10 @@ footer#footer {
   
   border-block-start: var(--s-6) dashed var(--text-color);
   background-image: radial-gradient(
-    oklch(from var(--text-color) l c h / 0.5) 0.05em,
+    color-mix(in oklch, var(--text-color) 25%, var(--background-color)) 0.05em,
     var(--background-color) 0.05em
   );
-  background-size: 0.75em 0.75em;
+  background-size: 0.5em 0.5em;
 }
 
 /** General article styles **/
