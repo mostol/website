@@ -308,7 +308,7 @@ footer#footer {
 /** General article styles **/
 article {
   --spacing: var(--s-1);
-  hyphens: auto;
+  /* hyphens: auto; */
 
   padding-block: var(--s1);
 
