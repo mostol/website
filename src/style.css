@@ -198,7 +198,10 @@ dl.iconlist {
 
 :root {
   /* Global styling */
-  font-family: "Inclusive", sans-serif;
+  font-family: 
+  "Inclusive",
+  Helvetica,
+  sans-serif;
   font-size: calc(1rem + 0.25vw);
   font-weight: 300;
 }
