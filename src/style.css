@@ -31,7 +31,7 @@
   --background-color: var(--light);
 
   /* Thicknesses */
-  /* --stroke: var(--s-4); */
+  /* --hairline: 0.05rem; */
 
   /* Units and measures */
   --measure: 60ch;
@@ -205,8 +205,6 @@ dl.iconlist {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
-  /* color: var(--yellow); */
-  
 }
 
 body {
@@ -260,8 +258,6 @@ a:hover, a:focus {
 a.logotype {
   all: unset;
   font-weight: 800;
-
-  /* color: var(--yellow); */
 
   font-family: "Recursive", monospace;
   font-variation-settings: "MONO" 1;
