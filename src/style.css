@@ -350,6 +350,11 @@ article {
     border-block-end: var(--s-6) dotted var(--text-color);
   }
 
+  & blockquote {
+    padding-inline-start: 1em;
+    border-inline-start: var(--s-6) dotted var(--text-color);
+  }
+
 }
 
 /*
