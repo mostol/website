@@ -181,7 +181,7 @@ html, body, div, section, header, nav, main, footer {
 dl.metas {
   display: grid;
   grid-template-columns: min-content 1fr;
-  column-gap: 0.25rem;
+  column-gap: 0.25em;
 
   font-size: smaller;
 }
@@ -189,7 +189,7 @@ dl.metas {
 dl.iconlist {
   display: grid;
   grid-template-columns: min-content 1fr;
-  column-gap: 0.25rem;
+  column-gap: 0.25em;
 }
 
 /**********
@@ -295,7 +295,7 @@ footer#footer {
   margin-inline: 0;
   padding-block: var(--s-2);
 
-  font-size: 0.75rem;
+  font-size: 0.75em;
   
   border-block-start: var(--s-6) dashed var(--text-color);
   background-image: radial-gradient(
@@ -328,14 +328,14 @@ article {
   }
 
   & h1 {
-    font-size: 4rem;
+    font-size: 4em;
     /* font-weight: 1000; */
     word-break: break-all;
     text-align: justify;
     text-transform: uppercase;
     padding-block: 0;
 
-    border-block-end: 0.5rem solid var(--text-color);
+    border-block-end: 0.1em solid var(--text-color);
   }
 
   & h2 {
@@ -385,15 +385,15 @@ pre {
 
   font-size: 0.5em;
 
-  right: 0.25rem;
-  top: 0.25rem;
+  right: 0.25em;
+  top: 0.25em;
 } */
 
 code {
   font-family: "Recursive", monospace;
   font-variation-settings: "MONO" 1;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 0.8em;
 }
 
 /** Syntax highlighting **/
