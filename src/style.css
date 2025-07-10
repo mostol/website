@@ -388,7 +388,7 @@ article {
 
 pre {
   box-sizing: border-box;
-  max-width: 100%;
+  /* Pre blocks scroll horizontally */
   overflow-x: auto;
 
   padding: var(--s0) var(--s0);
