@@ -35,7 +35,7 @@
   /* --hairline: 0.05rem; */
 
   /* Units and measures */
-  --measure: 70ch;
+  --measure: 55ch;
 
   /* Default spasing between flowing elements. */
   --spacing: var(--s0)
@@ -73,7 +73,7 @@ body {
   max-inline-size: var(--measure);
 }
 
-html, body, div, section, header, nav, main, footer {
+html, body, div, section, header, nav, main, article, footer {
   /* Allow non-text, box-like lements to be full-width */
   max-inline-size: none;
 }
@@ -200,9 +200,10 @@ dl.iconlist {
 :root {
   /* Global styling */
   font-family: 
-  "Inclusive",
-  Helvetica,
-  sans-serif;
+    "Inclusive",
+    'Helvetica Neue',
+    Helvetica,
+    sans-serif;
   font-size: calc(1rem + 0.25vw);
   font-weight: 300;
 }
@@ -326,7 +327,22 @@ article {
   --spacing: var(--s-1);
   /* hyphens: auto; */
 
+  /* "Center" layout */
+  box-sizing: content-box;
+  margin-inline: auto;
+
+  /* "Stack" layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--spacing);
+
   padding-block: var(--s1);
+
+  /* Default all article elements to be --measure
+  sized at most (based on default font size)
+  */
+  max-width: var(--measure);
 
   & h1, h2, h3, h4, h5, h6 {
     line-height: 1;
@@ -387,7 +403,7 @@ article {
 
 pre {
   box-sizing: border-box;
-  max-width: 100%;
+  /* Pre blocks scroll horizontally */
   overflow-x: auto;
 
   padding: var(--s0) var(--s0);
