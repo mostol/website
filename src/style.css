@@ -387,6 +387,21 @@ article {
     border-inline-start: var(--s-6) dotted var(--text-color);
   }
 
+  /* Custom button/popover "footnotes" */
+  & button[popovertarget] {
+    all: unset;
+  }
+  :popover-open {
+    font-size: smaller;
+    border: none;
+    background-color: var(--accent);
+    color: var(--dark);
+    inset: unset;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    hyphens: auto;
+  }
 }
 
 /*
