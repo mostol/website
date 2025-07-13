@@ -14,7 +14,7 @@ This is the firehose—to help myself actually write stuff out, the bar is fairl
     <a href="{{ post.url }}">{% if post.data.title %}{{ post.data.title }}{% elsif post.page.fileSlug %}{{ post.page.fileSlug }}{% endif %}</a>
     <small>
     (⊕ {{ post.data.created | formatDate: "en-US" }}{% if post.data.modified > post.data.created %}
-    Δ {{ post.data.created | formatDate: "en-US" }}{% endif %})</small>
+    Δ {{ post.data.modified | formatDate: "en-US" }}{% endif %})</small>
 
   </li>
 {%- endfor -%}
